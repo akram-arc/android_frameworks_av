@@ -63,6 +63,7 @@ exit_group: 1
 restart_syscall: 1
 rt_sigreturn: 1
 getrandom: 1
+# libc_malloc_debug -> libc
 madvise: 1
 
 # Required by AddressSanitizer
@@ -84,4 +85,9 @@ sendmsg: 1
 # in the crash_dump policy file. Therefore, include a version of the crash_dump
 # policy that does not include any mmap2/mprotect/prctl rules.
 @include /apex/com.android.media.swcodec/etc/seccomp_policy/crash_dump.no_mmap_mprotect_prctl.arm.policy
+# asan only policy
+readlink: 1
+# ubsan only policy
+open: 1
+
 @include /apex/com.android.media.swcodec/etc/seccomp_policy/code_coverage.arm.policy
